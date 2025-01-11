@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Bill Calculator</h2>
+
+<p>This button will show your bill, tax, tax ammount and total cost</p>
+
+<label for="billInput">Bill Amount:</label>
+<input type="text" id="billInput" placeholder="Enter bill amount"><br></br>
+
+<label for="taxInput">Tax Percentage:</label>
+<input type="text" id="taxInput" placeholder="Enter tax percentage"><br></br>
+
+<label for="peopleInput">Number of People:</label>
+<input type="text" id="peopleInput" placeholder="Enter number of people"><br></br>
+
+<button type="button" onclick="calculateBill()">Calculate!</button>
+
+<p id="bill"></p>
+<p id="tax"></p>
+<p id="taxAmount"></p>
+<p id="Total"></p>
+<p id="AmountPerPerson"></p>
+
+<script>
+function calculateBill() {
+//Get user inputs
+let numPeople = parseFloat(document.getElementById("peopleInput").value); //Number of People
+let bill = parseFloat(document.getElementById("billInput").value); //Bill amount
+let taxPercentage = parseFloat(document.getElementById("taxInput").value); //tax amount
+
+//Calculate tax, total and amount per person
+let taxAmount = (bill * (taxPercentage/100)).toFixed(2);
+let totalAmount = (bill + parseFloat(taxAmount)).toFixed(2);
+let amountPerPerson = (totalAmount / numPeople).toFixed(2);
+
+//update HTML with values
+document.getElementById("bill").innerHTML = `Bill: $${bill}`;
+document.getElementById("tax").innerHTML = `Tax percentage: ${taxPercentage}%`;
+document.getElementById("taxAmount").innerHTML = `Tax Amount: $${taxAmount}`;
+document.getElementById("Total").innerHTML = `Total Amount: $${totalAmount}`;
+document.getElementById("AmountPerPerson").innerHTML = `Total Amount Per Person: $${amountPerPerson}`;
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Bill Calculator</h2>
+
+<p>This button will show your bill, tax, tax ammount and total cost</p>
+
+<label for="billInput">Bill Amount:</label>
+<input type="text" id="billInput" placeholder="Enter bill amount"><br></br>
+
+<label for="taxInput">Tax Percentage:</label>
+<input type="text" id="taxInput" placeholder="Enter tax percentage"><br></br>
+
+<label for="tipPercent">Tip Percentage:</label>
+<select name="Tip Amount" id="tipInput">
+	<option value="0">No Tip</option>
+    <option value="5">5%</option>
+	<option value="10">10%</option>
+ 	<option value="15">15%</option>   
+    <option value="20">20%</option>
+    <option value="25">25%</option>
+    <option value="30">30%</option>
+    <option value="35">35%</option>
+    <option value="40">40%</option>
+    <option value="45">45%</option>
+    <option value="50">50%</option>
+</select><br></br>
+    
+<label for="peopleInput">Number of People:</label>
+<input type="text" id="peopleInput" placeholder="Enter number of people"><br></br>
+
+<button type="button" onclick="calculateBill()">Calculate!</button>
+
+<p id="bill"></p>
+<p id="tax"></p>
+<p id="taxAmount"></p>
+<p id="Total"></p>
+<p id="tipAmount"></p>
+<p id="finalAmount"></p>
+<p id="AmountPerPerson"></p>
+
+<script>
+function calculateBill() {
+  // Get user inputs
+  let numPeople = parseFloat(document.getElementById("peopleInput").value); // Number of People
+  let bill = parseFloat(document.getElementById("billInput").value); // Bill amount
+  let taxPercentage = parseFloat(document.getElementById("taxInput").value); // Tax amount
+  let tipPercent = parseFloat(document.getElementById("tipInput").value); // Tip percentage
+
+  // Log the values to the console for debugging
+  console.log("Bill:", bill);
+  console.log("Tax Percentage:", taxPercentage);
+  console.log("Tip Percentage:", tipPercent);
+  console.log("Number of People:", numPeople);
+
+  // Input validation to check if inputs are empty or invalid
+  if (isNaN(bill) || isNaN(taxPercentage) || isNaN(numPeople) || bill <= 0 || numPeople <= 0) {
+    alert("Please enter valid values for all fields.");
+    return; // Exit the function to prevent further calculations
+  }
+
+  // Calculate tax, total, and amount per person
+  let taxAmount = (bill * (taxPercentage / 100));
+  let totalAmount = (bill + taxAmount);
+  let tipAmount = (totalAmount * (tipPercent / 100));
+  let finalAmount = (totalAmount + tipAmount);
+  let amountPerPerson = (finalAmount / numPeople);
+
+  // Round to 2 decimal places
+  taxAmount = taxAmount.toFixed(2);
+  totalAmount = totalAmount.toFixed(2);
+  tipAmount = tipAmount.toFixed(2);
+  finalAmount = finalAmount.toFixed(2);
+  amountPerPerson = amountPerPerson.toFixed(2);
+
+  // Update HTML with values
+  document.getElementById("bill").innerHTML = `Bill: $${bill}`;
+  document.getElementById("tax").innerHTML = `Tax percentage: ${taxPercentage}%`;
+  document.getElementById("taxAmount").innerHTML = `Tax Amount: $${taxAmount}`;
+  document.getElementById("Total").innerHTML = `Total Before Tip: $${totalAmount}`;
+  document.getElementById("tipAmount").innerHTML = `Tip Amount: $${tipAmount}`;
+  document.getElementById("finalAmount").innerHTML = `Final Amount: $${finalAmount}`;
+  document.getElementById("AmountPerPerson").innerHTML = `Total Amount Per Person: $${amountPerPerson}`;
+}
+</script>
+
+</body>
+</html>

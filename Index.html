@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Event Countdown</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>Event Countdown</h1>
+
+  <div id="events">
+    <div id="Skint Night - January"></div>
+    <div id="Skint Night - February"></div>
+    <div id="Skint Night - March"></div>
+    <div id="Recharge Day"></div>
+    <div id="Christmas"></div>
+  </div>
+
+  <!-- Admin form to update event dates -->
+  <h2>Admin: Update Event Dates</h2>
+  <form id="admin-form">
+    <label for="event-name">Event Name:</label>
+    <select id="event-name">
+      <option value="Skint Night - January">Skint Night - January</option>
+      <option value="Skint Night - February">Skint Night - February</option>
+      <option value="Skint Night - March">Skint Night - March</option>
+      <option value="Recharge Day">Recharge Day</option>
+      <option value="Christmas">Christmas</option>
+    </select>
+
+    <label for="event-date">Event Date:</label>
+    <input type="datetime-local" id="event-date" required>
+
+    <button type="submit">Update Event</button>
+  </form>
+
+  <script src="script.js"></script>
+</body>
+</html>

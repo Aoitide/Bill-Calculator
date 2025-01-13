@@ -3,7 +3,7 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f5f7fa;
+  background-color: #faf0d4;
   color: #333;
   display: flex;
   flex-direction: column;
@@ -12,7 +12,7 @@ body {
 
 /* Header Styles */
 header {
-  background-color: #2196F3;
+  background-color: #1f765c;
   color: white;
   padding: 15px 20px;
   text-align: center;
@@ -73,13 +73,13 @@ button:hover, .btn:hover {
 /* Links */
 a {
   text-decoration: none;
-  color: #2196F3;
+  color: #398c5e;
   font-weight: bold;
   transition: color 0.3s ease;
 }
 
 a:hover {
-  color: #0b7dda;
+  color: #296544;
 }
 
 /* Responsive Layout */

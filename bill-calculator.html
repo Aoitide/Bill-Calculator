@@ -252,7 +252,9 @@ function calculateBill() {
   tipAmount = tipAmount.toFixed(2);
   finalAmount = finalAmount.toFixed(2);
   amountPerPerson = amountPerPerson.toFixed(2);
-
+  discountedBill = discountedBill.toFixed(2);	
+  bill = bill.toFixed(2);
+	
   // Update HTML with values
   document.getElementById("bill").innerHTML = `Bill: ${currencySymbol(currency)}${bill * currency}`;
   document.getElementById("discount").innerHTML = `Discount Amount: ${currencySymbol(currency)}${discountAmount}`;

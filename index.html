@@ -3,36 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Event Countdown</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Countdown Clock</title>
 </head>
 <body>
+  <h1>Upcoming Event</h1>
+  <h2 id="closest-event">Loading...</h2>
+  <div id="countdown"></div>
 
-  <h1>Event Countdown</h1>
-
-  <div id="events">
-    <div id="Skint Night - January"></div>
-    <div id="Skint Night - February"></div>
-    <div id="Skint Night - March"></div>
-    <div id="Recharge Day"></div>
-    <div id="Christmas"></div>
-  </div>
-
-  <!-- Admin form to update event dates -->
-  <h2>Admin: Update Event Dates</h2>
+  <h3>Admin Panel</h3>
   <form id="admin-form">
     <label for="event-name">Event Name:</label>
-    <select id="event-name">
-      <option value="Skint Night - January">Skint Night - January</option>
-      <option value="Skint Night - February">Skint Night - February</option>
-      <option value="Skint Night - March">Skint Night - March</option>
-      <option value="Recharge Day">Recharge Day</option>
-      <option value="Christmas">Christmas</option>
-    </select>
-
+    <input type="text" id="event-name" required>
+    <br>
     <label for="event-date">Event Date:</label>
     <input type="datetime-local" id="event-date" required>
-
+    <br>
     <button type="submit">Update Event</button>
   </form>
 

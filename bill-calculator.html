@@ -133,8 +133,7 @@ input:checked + .slider:before {
 </style>
 </head>
 <body>
-	
-<a href="https://aoitide.github.io" title="home">Home</a>	
+
 <h2>Bill Calculator</h2>
 
 <p>This button will show your bill, tax, tax ammount and total cost</p>
@@ -252,9 +251,8 @@ function calculateBill() {
   tipAmount = tipAmount.toFixed(2);
   finalAmount = finalAmount.toFixed(2);
   amountPerPerson = amountPerPerson.toFixed(2);
-  discountedAmount = discountedAmount.toFixed(2);	
-  bill = bill.toFixed(2);
-	
+  discountAmount = discountAmount.toFixed(2);
+
   // Update HTML with values
   document.getElementById("bill").innerHTML = `Bill: ${currencySymbol(currency)}${(bill * currency).toFixed(2)}`;
   document.getElementById("discount").innerHTML = `Discount Amount: ${currencySymbol(currency)}${discountAmount}`;

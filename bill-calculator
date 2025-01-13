@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 20px;
+  padding: 0;
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+/* Form Styling */
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input, select, button {
+  display: block;
+  width: 100%;
+  max-width: 300px; /* Restricts the width on larger screens */
+  margin-bottom: 15px;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0b7dda;
+}
+
+/* Responsive Layout */
+@media (max-width: 768px) {
+  body {
+    margin: 10px;
+  }
+
+  input, select, button {
+    width: 100%;
+  }
+}
+
+/* Switch Styling */
+.switch {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+/* Result Styling */
+p {
+  font-size: 16px;
+  margin: 10px 0;
+}
+
+h2 {
+  color: #2196F3;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+</style>
+</head>
+<body>
+
+<h2>Bill Calculator</h2>
+
+<p>This button will show your bill, tax, tax ammount and total cost</p>
+
+<label for="billInput">Bill Amount:</label>
+<input type="text" id="billInput" placeholder="Enter bill amount">
+
+<label for="currencyInput"></label>
+<select name="currencyInput" id="currencyInput">
+	<option value="1">USD</option>
+    <option value="0.9">GBP</option>
+	<option value="130">JPY</option>
+</select><br></br>
+
+<label for="taxInput">Tax:</label>
+<input type="text" id="taxInput" placeholder="Enter tax percentage"><br></br>
+
+<label for="Discount">Discount:</label>
+<input type="text" id="discountInput" placeholder="Enter discount amount" max=100><br></br>
+
+<label for="applyTipToggle" class="switch">
+  <input type="checkbox" id="applyTipToggle" > 
+  <span class="slider round"></span>
+</label><br></br>
+
+Add tip to bill only (Tip applied to whole bill by default)<br></br>
+
+<label for="tipPercent">Tip Percentage:</label>
+<select name="Tip Amount" id="tipInput">
+	<option value="0">No Tip</option>
+    <option value="5">5%</option>
+	<option value="10">10%</option>
+ 	<option value="15">15%</option>   
+    <option value="20">20%</option>
+    <option value="25">25%</option>
+    <option value="30">30%</option>
+    <option value="35">35%</option>
+    <option value="40">40%</option>
+    <option value="45">45%</option>
+    <option value="50">50%</option>
+</select><br></br>
+    
+<label for="peopleInput">Number of People:</label>
+<input type="text" id="peopleInput" placeholder="Enter number of people"><br></br>
+
+<button type="button" onclick="calculateBill()">Calculate!</button>
+
+<p id="bill"></p>
+<p id="discount"></p>
+<p id="tax"></p>
+<p id="taxAmount"></p>
+<p id="Total"></p>
+<p id="tipAmount"></p>
+<p id="finalAmount"></p>
+<p id="AmountPerPerson"></p>
+
+<script>
+function calculateBill() {
+	console.log("calculateBill is working!");
+  // Get user inputs
+  let numPeople = parseFloat(document.getElementById("peopleInput").value); // Number of People
+  let bill = parseFloat(document.getElementById("billInput").value); // Bill amount
+  let taxPercentage = parseFloat(document.getElementById("taxInput").value); // Tax amount 
+  let tipPercent = parseFloat(document.getElementById("tipInput").value); // Tip percentage
+  let currency = parseFloat(document.getElementById("currencyInput").value); //Currency Value
+  let applyTiptoTotal = document.getElementById("applyTipToggle").checked; // Access the checkbox value
+  let discount = parseFloat(document.getElementById("discountInput").value); //Discount amount in % 
+  if (discount > bill) {
+   alert("Discount cannot exceed the bill amount. Setting discount to the bill amount.");
+   discount = bill; // Adjust discount to a valid value
+  if (discount < 0) {
+  alert("Discount cannot be negetive. Setting discount to 0.");
+  discount = 0;
+  }
+   }
+
+  // Log the values to the console for debugging
+  console.log("Bill:", bill);
+  console.log("Tax Percentage:", taxPercentage);
+  console.log("Tip Percentage:", tipPercent);
+  console.log("Number of People:", numPeople);
+  console.log("Currency:", currency);
+  console.log("applyTiptoTotal", applyTiptoTotal);
+  console.log("discount", discount);
+
+  // Input validation to check if inputs are empty or invalid
+  if (isNaN(bill) || isNaN(taxPercentage) || isNaN(numPeople) || bill <= 0 || numPeople <= 0) {
+    alert("Please enter valid values for all fields.");
+    return; // Exit the function to prevent further calculations
+  }
+
+  // Calculate tax, total, and amount per person
+  let discountedBill = bill - (bill * (discount / 100));
+  let billLocal = (discountedBill * currency);
+  let discountAmount = ((bill * (discount / 100)) * currency);
+  let taxAmount = (billLocal * (taxPercentage / 100));
+  let totalAmount = (billLocal + taxAmount);
+  let tipAmount;
+  if (applyTiptoTotal) {
+  //apply tip to )bill + tax)
+  tipAmount = (totalAmount * (tipPercent / 100));
+  } else {
+  //apply tip to bill only
+  tipAmount = (billLocal * (tipPercent / 100));
+  }
+  let finalAmount = (totalAmount + tipAmount);
+  let amountPerPerson = (finalAmount / numPeople);
+  
+
+
+  // Round to 2 decimal places
+  billLocal = billLocal.toFixed(2);
+  taxAmount = taxAmount.toFixed(2);
+  totalAmount = totalAmount.toFixed(2);
+  tipAmount = tipAmount.toFixed(2);
+  finalAmount = finalAmount.toFixed(2);
+  amountPerPerson = amountPerPerson.toFixed(2);
+
+  // Update HTML with values
+  document.getElementById("bill").innerHTML = `Bill: ${currencySymbol(currency)}${bill * currency}`;
+  document.getElementById("discount").innerHTML = `Discount Amount: ${currencySymbol(currency)}${discountAmount}`;
+  document.getElementById("tax").innerHTML = `Tax percentage: ${taxPercentage}%`;
+  document.getElementById("taxAmount").innerHTML = `Tax Amount: ${currencySymbol(currency)}${taxAmount}`;
+  document.getElementById("Total").innerHTML = `Total Before Tip: ${currencySymbol(currency)}${totalAmount}`;
+  document.getElementById("tipAmount").innerHTML = `Tip Amount: ${currencySymbol(currency)}${tipAmount}`;
+  document.getElementById("finalAmount").innerHTML = `Final Amount: ${currencySymbol(currency)}${finalAmount}`;
+  document.getElementById("AmountPerPerson").innerHTML = `Total Amount Per Person: ${currencySymbol(currency)}${amountPerPerson}`;
+}
+
+function currencySymbol(currency) {
+	switch (currency) {
+    	case 1:
+        	return "$"; // USD
+        case 0.9:
+        	return "£"; // GBP
+        case 130:
+        	return "¥"; // JPY
+        default:
+        	return "$";
+   }
+}
+</script>
+
+</body>
+</html>

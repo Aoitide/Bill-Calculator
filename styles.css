@@ -1,7 +1,7 @@
 /* General Styles */
 body {
-  font-family: 'Roboto', sans-serif;
-  background-color: #e7ece7;
+  font-family: 'Roboto', sans-serif; /* Updated for consistency */
+  background-color: #e7ece7; /* Subtle light background */
   color: #333;
   margin: 20px;
   padding: 0;
@@ -27,7 +27,7 @@ input, select, button {
 }
 
 button {
-  background-color: #2196F3; /* Blue */
+  background-color: #2196F3; /* Blue to match your site */
   color: white;
   border: none;
   cursor: pointer;
@@ -35,7 +35,7 @@ button {
 }
 
 button:hover {
-  background-color: #0b7dda; /* Darker blue */
+  background-color: #0b7dda; /* Darker blue on hover */
 }
 
 /* Responsive Layout */
@@ -134,5 +134,14 @@ input, select, button {
 input:focus, select:focus, button:focus {
   border-color: #98b798; /* Light green focus */
   outline: none;
+}
+
+/* Adjusting button color */
+button {
+  background-color: #315449; /* Deep green for the button */
+}
+
+button:hover {
+  background-color: #98b798; /* Lighter green on hover */
 }
 

@@ -3,96 +3,136 @@ body {
   font-family: 'Roboto', sans-serif;
   background-color: #e7ece7;
   color: #333;
-  margin: 0;
+  margin: 20px;
   padding: 0;
 }
 
-/* Header and Footer Styles */
-header, footer {
-  background-color: #315449; /* Dark green */
-  color: #D1E8D1; /* Light green */
-  padding: 10px 0;
-  text-align: center;
-}
-
-header h1, footer p {
-  font-family: 'Roboto', sans-serif;
-  margin: 0;
-  font-weight: normal;
-}
-
-/* Navbar Styles */
-nav {
-  background-color: #98b798; /* Light green */
-  padding: 10px 0;
-}
-
-nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-}
-
-nav li {
-  margin: 0 15px;
-  position: relative;
-}
-
-nav a {
-  color: #315449; /* Dark green */
-  text-decoration: none;
+/* Form Styling */
+label {
+  display: block;
   font-weight: bold;
-  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+input, select, button {
   display: block;
-  padding: 10px;
+  width: 100%;
+  max-width: 300px; /* Restricts the width on larger screens */
+  margin-bottom: 15px;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
 }
 
-nav a:hover {
-  background-color: #D1E8D1; /* Light green on hover */
-}
-
-/* Dropdown Menu */
-nav li:hover > ul {
-  display: block;
-}
-
-nav ul ul {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  background-color: #315449; /* Dark green */
-  padding: 10px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-nav ul ul li {
-  width: 200px;
-}
-
-nav ul ul li a {
-  color: #e7ece7; /* Light color for dropdown links */
-}
-
-nav ul ul li a:hover {
-  background-color: #98b798; /* Lighter green for hover */
-}
-
-/* Add a smooth transition for hover */
-nav a, nav ul ul li a {
+button {
+  background-color: #2196F3; /* Blue */
+  color: white;
+  border: none;
+  cursor: pointer;
   transition: background-color 0.3s ease;
 }
 
-/* Responsive Design */
+button:hover {
+  background-color: #0b7dda; /* Darker blue */
+}
+
+/* Responsive Layout */
 @media (max-width: 768px) {
-  nav ul {
-    flex-direction: column;
-    align-items: center;
+  body {
+    margin: 10px;
   }
 
-  nav li {
-    margin: 5px 0;
+  input, select, button {
+    width: 100%;
   }
 }
+
+/* Switch Styling */
+.switch {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3; /* Blue for the switch */
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* Result Styling */
+p {
+  font-size: 16px;
+  margin: 10px 0;
+  color: #333; /* Ensure the text is legible */
+}
+
+h2 {
+  color: #2196F3; /* Blue for headings */
+}
+
+/* Add a smooth transition for form elements */
+input, select, button {
+  transition: border-color 0.3s ease;
+}
+
+input:focus, select:focus, button:focus {
+  border-color: #98b798; /* Light green focus */
+  outline: none;
+}
+

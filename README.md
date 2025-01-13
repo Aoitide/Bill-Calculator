@@ -1,3 +1,4 @@
+theme: jekyll-theme-minimal
 # Bill-Calculator
 A HTML file with JS to calculate the total amount of an item or meal. 
 

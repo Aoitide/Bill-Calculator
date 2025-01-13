@@ -1,3 +1,4 @@
+document.addEventListener("DOMContentLoaded", () => {
 // Example of event data
 let events = [
   { name: 'Skint Night - January', date: '2025-01-25T18:00:00' },

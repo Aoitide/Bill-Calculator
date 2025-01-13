@@ -1,4 +1,6 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
+  console.log("DOM fully loaded and parsed");
+
   // Example of event data
   let events = [
     { name: 'Skint Night - January', date: '2025-01-25T18:00:00' },
@@ -6,6 +8,8 @@ document.addEventListener("DOMContentLoaded", () => {
     { name: 'Recharge Day', date: '2025-03-15T09:00:00' },
     { name: 'Christmas', date: '2025-12-25T00:00:00' }
   ];
+
+  console.log("Events array initialized:", events);
 
   // Fetch event data from a remote server (API simulation)
   function fetchEventData() {
@@ -20,11 +24,14 @@ document.addEventListener("DOMContentLoaded", () => {
   // Display the closest upcoming event
   function displayClosestEvent() {
     const now = new Date();
+    console.log("Current date:", now);
 
     // Filter and sort events by date
     const upcomingEvents = events
       .filter(event => new Date(event.date) > now) // Only future events
       .sort((a, b) => new Date(a.date) - new Date(b.date)); // Closest first
+
+    console.log("Upcoming events:", upcomingEvents);
 
     // If there are upcoming events, display the closest one
     const eventElement = document.getElementById('closest-event');
@@ -41,6 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Start and update the countdown for the closest event
   function startCountdown(targetDate) {
     const countdownElement = document.getElementById('countdown');
+    console.log("Starting countdown to:", targetDate);
 
     function updateCountdown() {
       const now = new Date();

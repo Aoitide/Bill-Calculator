@@ -1,102 +1,98 @@
 /* General Styles */
 body {
-  font-family: 'Roboto', sans-serif; /* Google font similar to Metacritic */
+  font-family: 'Roboto', sans-serif;
+  background-color: #e7ece7;
+  color: #333;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4; /* Soft light background */
-  color: #333;
-  line-height: 1.6;
 }
 
-h1, h2, h3 {
-  color: #2c3e50; /* Dark gray for headings */
-}
-
-/* Header */
-header {
-  background-color: #2ecc71; /* Soft green, can be changed to fit your palette */
-  padding: 10px 20px;
+/* Header and Footer Styles */
+header, footer {
+  background-color: #315449; /* Dark green */
+  color: #D1E8D1; /* Light green */
+  padding: 10px 0;
   text-align: center;
 }
 
-header h1 {
-  font-size: 36px;
-  margin: 0;
-  color: white;
+header h1, footer p {
   font-family: 'Roboto', sans-serif;
+  margin: 0;
+  font-weight: normal;
 }
 
-/* Navigation Bar */
+/* Navbar Styles */
 nav {
-  background-color: #34495e; /* Darker background for navbar */
-  display: flex;
-  justify-content: center;
+  background-color: #98b798; /* Light green */
   padding: 10px 0;
 }
 
 nav ul {
-  list-style-type: none;
-  margin: 0;
+  list-style: none;
   padding: 0;
+  margin: 0;
   display: flex;
+  justify-content: center;
 }
 
-nav ul li {
-  margin: 0 20px;
+nav li {
+  margin: 0 15px;
+  position: relative;
 }
 
 nav a {
-  color: white;
+  color: #315449; /* Dark green */
   text-decoration: none;
+  font-weight: bold;
   font-size: 18px;
-  transition: color 0.3s ease;
+  display: block;
+  padding: 10px;
 }
 
 nav a:hover {
-  color: #ecf0f1; /* Lighter color for hover effect */
+  background-color: #D1E8D1; /* Light green on hover */
 }
 
 /* Dropdown Menu */
-nav ul li:hover > ul {
+nav li:hover > ul {
   display: block;
 }
 
 nav ul ul {
   display: none;
   position: absolute;
-  background-color: #34495e;
-  min-width: 200px;
-  list-style-type: none;
+  top: 100%;
+  left: 0;
+  background-color: #315449; /* Dark green */
   padding: 10px;
-  margin-top: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 nav ul ul li {
-  width: 100%;
+  width: 200px;
 }
 
 nav ul ul li a {
-  color: white;
-  padding: 10px;
-  display: block;
+  color: #e7ece7; /* Light color for dropdown links */
 }
 
 nav ul ul li a:hover {
-  background-color: #1abc9c; /* Hover color for dropdown */
+  background-color: #98b798; /* Lighter green for hover */
 }
 
-/* Centered Content */
-.main-content {
-  max-width: 1200px;
-  margin: 40px auto;
-  padding: 0 20px;
+/* Add a smooth transition for hover */
+nav a, nav ul ul li a {
+  transition: background-color 0.3s ease;
 }
 
-/* Footer */
-footer {
-  text-align: center;
-  background-color: #2ecc71;
-  padding: 10px 20px;
-  color: white;
-  font-size: 14px;
+/* Responsive Design */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav li {
+    margin: 5px 0;
+  }
 }

@@ -8,24 +8,44 @@ let events = [
 
 // Fetch event data from a remote server (API simulation)
 function fetchEventData() {
-  // In a real scenario, you would fetch this data from an actual backend
-  // Here we just simulate fetching event data from the server
-  // You can use the Fetch API to interact with an actual server later
   console.log("Fetching event data...");
 
   // Simulate server response after a delay (e.g., 1 second)
   setTimeout(() => {
-    updateCountdowns(); // Update countdowns after fetching data
+    displayClosestEvent(); // Update and display the closest event
   }, 1000);
 }
 
-// Update the countdown for each event
-function updateCountdowns() {
+// Display the closest upcoming event
+function displayClosestEvent() {
   const now = new Date();
 
-  events.forEach(event => {
-    const eventDate = new Date(event.date);
-    const timeDiff = eventDate - now;
+  // Filter and sort events by date
+  const upcomingEvents = events
+    .filter(event => new Date(event.date) > now) // Only future events
+    .sort((a, b) => new Date(a.date) - new Date(b.date)); // Closest first
+
+  // If there are upcoming events, display the closest one
+  if (upcomingEvents.length > 0) {
+    const closestEvent = upcomingEvents[0];
+    const eventElement = document.getElementById('closest-event');
+
+    eventElement.innerText = `Next Event: ${closestEvent.name}`;
+    startCountdown(new Date(closestEvent.date));
+  } else {
+    // No upcoming events
+    document.getElementById('closest-event').innerText = "No upcoming events!";
+    document.getElementById('countdown').innerText = "";
+  }
+}
+
+// Start and update the countdown for the closest event
+function startCountdown(targetDate) {
+  const countdownElement = document.getElementById('countdown');
+
+  function updateCountdown() {
+    const now = new Date();
+    const timeDiff = targetDate - now;
 
     if (timeDiff > 0) {
       const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
@@ -33,11 +53,15 @@ function updateCountdowns() {
       const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
 
-      document.getElementById(event.name).innerText = `${event.name}: ${days}d ${hours}h ${minutes}m ${seconds}s remaining.`;
+      countdownElement.innerText = `${days}d ${hours}h ${minutes}m ${seconds}s remaining.`;
     } else {
-      document.getElementById(event.name).innerText = `${event.name}: Event has passed.`;
+      countdownElement.innerText = "The event has started!";
+      clearInterval(intervalId); // Stop the countdown
     }
-  });
+  }
+
+  updateCountdown(); // Initial call
+  const intervalId = setInterval(updateCountdown, 1000); // Update every second
 }
 
 // Handle the form submission for updating event dates
@@ -47,16 +71,15 @@ document.getElementById('admin-form').addEventListener('submit', function(event)
   const eventName = document.getElementById('event-name').value;
   const eventDate = document.getElementById('event-date').value;
 
-  // In a real scenario, you would send this to the backend via an AJAX request
   console.log(`Updating ${eventName} date to ${eventDate}`);
 
-  // For now, let's just update the event data locally
+  // Update event data locally
   const updatedEvent = events.find(e => e.name === eventName);
   if (updatedEvent) {
     updatedEvent.date = eventDate; // Update the date
   }
 
-  fetchEventData(); // Re-fetch and update the countdowns
+  fetchEventData(); // Re-fetch and update the display
 });
 
 // Initial fetch of event data

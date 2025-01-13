@@ -31,35 +31,38 @@
 
 <p>This button will show your bill, tax, tax ammount and total cost</p>
 
-<label for="billInput">Bill Amount:</label>
-<input type="text" id="billInput" placeholder="Enter bill amount">
 
-<label for="currencyInput"></label>
-<select name="currencyInput" id="currencyInput">
-	<option value="1">USD</option>
-    <option value="0.9">GBP</option>
-	<option value="130">JPY</option>
-</select><br></br>
+<!-- Wrapper div to center the content -->
+<div class="calculator-wrapper">
+  <label for="billInput">Bill Amount:</label>
+  <input type="text" id="billInput" placeholder="Enter bill amount">
 
-<label for="taxInput">Tax:</label>
-<input type="text" id="taxInput" placeholder="Enter tax percentage"><br></br>
+  <label for="currencyInput"></label>
+  <select name="currencyInput" id="currencyInput">
+  	<option value="1">USD</option>
+      <option value="0.9">GBP</option>
+  	<option value="130">JPY</option>
+  </select><br></br>
 
-<label for="Discount">Discount:</label>
-<input type="text" id="discountInput" placeholder="Enter discount amount" max=100><br></br>
+  <label for="taxInput">Tax:</label>
+  <input type="text" id="taxInput" placeholder="Enter tax percentage"><br></br>
 
-<label for="applyTipToggle" class="switch">
-  <input type="checkbox" id="applyTipToggle" > 
-  <span class="slider round"></span>
-</label><br></br>
+  <label for="Discount">Discount:</label>
+  <input type="text" id="discountInput" placeholder="Enter discount amount" max="100"><br></br>
 
-Add tip to bill only (Tip applied to whole bill by default)<br></br>
+  <label for="applyTipToggle" class="switch">
+    <input type="checkbox" id="applyTipToggle" > 
+    <span class="slider round"></span>
+  </label><br></br>
 
-<label for="tipPercent">Tip Percentage:</label>
-<select name="Tip Amount" id="tipInput">
-	<option value="0">No Tip</option>
-    <option value="5">5%</option>
-	<option value="10">10%</option>
- 	<option value="15">15%</option>   
+  Add tip to bill only (Tip applied to whole bill by default)<br></br>
+
+  <label for="tipPercent">Tip Percentage:</label>
+  <select name="Tip Amount" id="tipInput">
+  	<option value="0">No Tip</option>
+      <option value="5">5%</option>
+  	<option value="10">10%</option>
+    <option value="15">15%</option>   
     <option value="20">20%</option>
     <option value="25">25%</option>
     <option value="30">30%</option>
@@ -67,21 +70,22 @@ Add tip to bill only (Tip applied to whole bill by default)<br></br>
     <option value="40">40%</option>
     <option value="45">45%</option>
     <option value="50">50%</option>
-</select><br></br>
-    
-<label for="peopleInput">Number of People:</label>
-<input type="text" id="peopleInput" placeholder="Enter number of people"><br></br>
+  </select><br></br>
 
-<button type="button" onclick="calculateBill()">Calculate!</button>
+  <label for="peopleInput">Number of People:</label>
+  <input type="text" id="peopleInput" placeholder="Enter number of people"><br></br>
 
-<p id="bill"></p>
-<p id="discount"></p>
-<p id="tax"></p>
-<p id="taxAmount"></p>
-<p id="Total"></p>
-<p id="tipAmount"></p>
-<p id="finalAmount"></p>
-<p id="AmountPerPerson"></p>
+  <button type="button" onclick="calculateBill()">Calculate!</button>
+
+  <p id="bill"></p>
+  <p id="discount"></p>
+  <p id="tax"></p>
+  <p id="taxAmount"></p>
+  <p id="Total"></p>
+  <p id="tipAmount"></p>
+  <p id="finalAmount"></p>
+  <p id="AmountPerPerson"></p>
+</div> <!-- End of calculator-wrapper -->
 
 <script>
 function calculateBill() {

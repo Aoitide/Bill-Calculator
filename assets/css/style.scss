@@ -1,116 +1,64 @@
 /* General Styles */
 body {
   font-family: Arial, sans-serif;
-  margin: 20px;
+  margin: 0;
   padding: 0;
-  background-color: #f9f9f9;
+  background-color: #f5f7fa;
   color: #333;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
-/* Form Styling */
-label {
-  display: block;
+/* Header Styles */
+header {
+  background-color: #2196F3;
+  color: white;
+  padding: 15px 20px;
+  text-align: center;
+  font-size: 1.5em;
   font-weight: bold;
-  margin-bottom: 5px;
 }
 
-input, select, button {
-  display: block;
+/* Footer Styles */
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  margin-top: auto;
+  font-size: 0.9em;
+}
+
+/* Main Content Styling */
+main {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+/* Card Styles */
+.card {
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  max-width: 600px;
   width: 100%;
-  max-width: 300px; /* Restricts the width on larger screens */
-  margin-bottom: 15px;
-  padding: 8px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  padding: 20px;
   box-sizing: border-box;
+  text-align: center;
 }
 
-button {
+/* Buttons */
+button, .btn {
+  display: inline-block;
   background-color: #2196F3;
   color: white;
   border: none;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button:hover {
-  background-color: #0b7dda;
-}
-
-/* Responsive Layout */
-@media (max-width: 768px) {
-  body {
-    margin: 10px;
-  }
-
-  input, select, button {
-    width: 100%;
-  }
-}
-
-/* Switch Styling */
-.switch {
-  margin-top: 10px;
-  margin-bottom: 15px;
-}
-
-/* Result Styling */
-p {
+  padding: 10px 20px;
   font-size: 16px;
-  margin: 10px 0;
-}
-
-h2 {
-  color: #2196F3;
-}
-
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 50px;
-  height: 24px;
-}
-
-.switch input { 
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.slider {
-  position: absolute;
+  border-radius: 5px;
   cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 16px;
-  width: 16px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-input:checked + .slider {
-  background-color: #2196F3;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: tran
+ 

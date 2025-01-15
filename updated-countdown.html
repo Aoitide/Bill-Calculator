@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Countdown to Skint night!</h2>
+
+<p>Click me to see how long till Skint night!</p>
+
+<!---botton to trigger countdown --->
+<button type="button" onclick="startCountdown()">Click Me!</button>
+
+<!---paragraph to display the countdown -->
+<p id="demo1"></p>
+
+
+<script>
+
+let timerInterval;
+
+function startCountdown() {
+const eventDates = [
+	new Date ("2025-01-15T11:53:00"),
+    new Date ("2025-02-01T18:00:00"),
+    new Date ("2025-03-01T09:00:00"),
+    new Date ("2025-12-25T00:00:00")
+]; 
+
+
+//find the soonest upcoming date
+
+function getNearestEvent(eventDates) {
+	const now = new Date();
+    let nearestEvent = null;
+    
+    //find the next upcoming event
+    for(let i = 0; i < eventDates.length; i++) {
+    if (eventDates[i] > now) {
+    	nearestEvent = eventDates[i];
+        break; //return the first future event 
+    }
+ }
+    return nearestEvent; // return the next event, or null if no upcoming events     
+}
+
+
+	let targetDate = getNearestEvent(eventDates);
+    
+    if (!targetDate) {
+    	document.getElementById("demo1").innerText = "No upcoming events!";
+        return;
+    }
+    
+
+
+//function to calculate time remaining
+function getTimeRemaining(endTime) {
+	const now = new Date();
+    const timeDifference = endTime - now;
+    
+    const days = Math.floor(timeDifference / (1000 * 60 * 60 *24));
+    const hours = Math.floor((timeDifference / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((timeDifference / (1000 * 60)) % 60);
+    const seconds = Math.floor((timeDifference / 1000) % 60);
+    
+    
+    return { total: timeDifference, days, hours, minutes, seconds };
+}
+
+// function to update clock
+function updateClock() {
+	const timeLeft = getTimeRemaining(targetDate);
+    
+    
+   
+    //check if countdown is complete
+    if (timeLeft.total <= 0) {
+    	clearInterval(timerInterval); //stop timer
+        console.log("Countdown ended!");
+        
+        
+        // find the next event and update targetDate
+        targetDate = getNearestEvent(eventDates);
+        
+        if(targetDate) {
+        //restart the countdown for the next event
+        timerInterval = setInterval(updateClock, 1000);// start again with the next target date
+        } else {
+        // No upcoming events
+        document.getElementByID("demo1").innerText = "No upcoming events!";
+        }
+       } else {
+       // display countdown
+        document.getElementById("demo1").innerText =
+        `Time left: ${timeLeft.days} days, ${timeLeft.hours} hours, ${timeLeft.minutes} minutes, ${timeLeft.seconds} seconds`;
+    }
+ }
+ 
+ //start countdown
+ timerInterval = setInterval(updateClock, 1000); //Update every second
+}
+</script>
+
+</body>
+</html>

@@ -4,10 +4,10 @@
 
 <h2>Countdown to Skint night!</h2>
 
-<p>Click me to see how long till Skint night!</p>
+<p>Lets see how long it is till skint night!</p><br></br>
 
-<!-- Button to trigger countdown -->
-<button type="button" onclick="fetchEventDates()">Click Me!</button>
+<p>Next Skint night in:</p>
+
 
 <!-- Paragraph to display the countdown -->
 <p id="demo1"></p>
@@ -89,6 +89,9 @@ function startCountdown(eventDates) {
     // Start countdown
     timerInterval = setInterval(updateClock, 1000); // Update every second
 }
+
+//Fetch events as soon as page loads
+fetchEventDates();
 </script>
 
 </body>

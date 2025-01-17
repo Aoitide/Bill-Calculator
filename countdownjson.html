@@ -24,6 +24,10 @@
 <!-- Paragraph to display the countdown -->
 <p id="demo1"></p>
 
+
+<!-- Footer section -->
+<div id="footer"></div>
+
 <script>
 function loadComponent(id, file) {
     fetch(file)
@@ -34,6 +38,7 @@ function loadComponent(id, file) {
 
   loadComponent("header", "header.html");
   loadComponent("navbar", "navbar.html");
+  leadComponent("footer", "footer.html");
   
 let timerInterval;
 
